@@ -1,3 +1,4 @@
 # London-tube-status
 
-Create python module for fetching the london tube status in a format suitable for HASS
+Home-assistant module for fetching the London tube status.
+Place tube_state.py in the folder /custome_components/sensor
