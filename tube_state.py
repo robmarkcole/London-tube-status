@@ -44,7 +44,7 @@ class LondonTubeSensor(Entity):    # Entity
     """
 
     TRANSPORT_API_URL_BASE = "https://api.tfl.gov.uk/line/mode/tube/status"
-    ICON = 'mdi:train'
+    ICON = 'mdi:subway'
 
     def __init__(self, line):
         """Initialize the sensor."""
@@ -90,7 +90,7 @@ class LondonTubeSensor(Entity):    # Entity
             status_dict = {key:value for key, value in zip(lines, statuses)}
 
             self._data = status_dict
-            self._state = status_dict[self.line]
+            self._state = status_dict[self.line.lower()]   # Get lower case as requireds
 
         except requests.RequestException as req_exc:
             print(

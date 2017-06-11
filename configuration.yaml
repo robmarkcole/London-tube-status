@@ -17,17 +17,18 @@ logbook:
 sensor:
   platform: tube_state
   line:
-    - bakerloo
-    - central
-    - circle
-    - district
-    - hammersmith-city
-    - jubilee
-    - metropolitan
-    - northern
-    - piccadilly
-    - victoria
-    - waterloo-city
+    - Bakerloo
+    - Central
+    - Circle
+    - District
+    - Hammersmith-city
+    - Jubilee
+    - Metropolitan
+    - Northern
+    - Piccadilly
+    - Victoria
+    - Waterloo-city
+
 
 group:
   default_view:
