@@ -65,6 +65,9 @@ class LondonTubeSensor(Entity):    # Entity
         self._url = self.API_URL_BASE
         self._line = line
         self._state = 'Updating'
+        self._statuses = []
+        self._goodness = False
+        self._description = 'Updating'
 
     @property
     def name(self):
@@ -97,12 +100,23 @@ class LondonTubeSensor(Entity):    # Entity
 
             if 'Good Service' in self._statuses:   # if good status, this is the only status returned
                 self._state = 'Good Service'
+                self._goodness = True              # convenience attribute to detect good service
                 self._description = 'Nothing to report'
             else:
-                self._state = 'Disruptions'
+                self._state = ' + '.join(set(self._statuses))   # get the unique statuses and join
+                self._goodness = False
                 self._description = [status['reason'] for status in self._data] # get the reasons
 
         except requests.RequestException as req_exc:
             print(
                 'Invalid response from API: %s', req_exc
             )
+
+    @property
+    def device_state_attributes(self):
+        """Return other details about the sensor state."""
+        attrs = {ATTR_ATTRIBUTION: ATTRIBUTION}  # {'attribution': 'Data provided by transportapi.com'}
+        attrs['Goodness'] = self._goodness # if there is data, append
+        attrs['Statuses'] = self._statuses # if there is data, append
+        attrs['Description'] = self._description # if there is data, append
+        return attrs

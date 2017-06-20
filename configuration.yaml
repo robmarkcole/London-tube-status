@@ -15,20 +15,25 @@ history:
 logbook:
 
 sensor:
-  platform: tube_state
-  line:
-    - Bakerloo
-    - Central
-    - Circle
-    - District
-    - Hammersmith-city
-    - Jubilee
-    - Metropolitan
-    - Northern
-    - Piccadilly
-    - Victoria
-    - Waterloo-city
+  - platform: tube_state
+    line:
+      - Bakerloo
+      - Central
+      - Circle
+      - District
+      - Hammersmith-city
+      - Jubilee
+      - Metropolitan
+      - Northern
+      - Piccadilly
+      - Victoria
+      - Waterloo-city
 
+  - platform: template
+    sensors:
+      circle_line_description:
+        value_template: '{{states.sensor.circle.attributes.Description}}'
+        friendly_name: 'Circle line info'
 
 group:
   default_view:
@@ -43,11 +48,12 @@ group:
       - sensor.bakerloo
       - sensor.central
       - sensor.circle
-      - sensor.district
-      - sensor.hammersmithcity
-      - sensor.jubilee
-      - sensor.metropolitan
-      - sensor.northern
-      - sensor.piccadilly
-      - sensor.victoria
-      - sensor.waterloocity
+      - sensor.circle_line_description
+  #    - sensor.district
+  #    - sensor.hammersmithcity
+  #    - sensor.jubilee
+  #    - sensor.metropolitan
+  #    - sensor.northern
+  #    - sensor.piccadilly
+  #    - sensor.victoria
+  #    - sensor.waterloocity
