@@ -49,6 +49,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
     add_devices(sensors)
     _LOGGER.info("The tube_state component is ready!")
+    _LOGGER.info(ATTRIBUTION)
 
 
 class LondonTubeSensor(Entity):    # Entity
@@ -115,7 +116,7 @@ class LondonTubeSensor(Entity):    # Entity
     @property
     def device_state_attributes(self):
         """Return other details about the sensor state."""
-        attrs = {ATTR_ATTRIBUTION: ATTRIBUTION}  # {'attribution': 'Data provided by transportapi.com'}
+        attrs = {}  # {'attribution': 'Data provided by transportapi.com'}
         attrs['Goodness'] = self._goodness # if there is data, append
         attrs['Statuses'] = self._statuses # if there is data, append
         attrs['Description'] = self._description # if there is data, append

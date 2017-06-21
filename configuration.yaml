@@ -31,9 +31,9 @@ sensor:
 
   - platform: template
     sensors:
-      circle_line_description:
-        value_template: '{{states.sensor.circle.attributes.Description}}'
-        friendly_name: 'Circle line info'
+      circle_line_goodness:
+        value_template: '{{states.sensor.circle.attributes.Goodness}}'
+        friendly_name: 'Circle line Goodness'
 
 group:
   default_view:
@@ -48,12 +48,12 @@ group:
       - sensor.bakerloo
       - sensor.central
       - sensor.circle
-      - sensor.circle_line_description
-  #    - sensor.district
-  #    - sensor.hammersmithcity
-  #    - sensor.jubilee
-  #    - sensor.metropolitan
-  #    - sensor.northern
-  #    - sensor.piccadilly
-  #    - sensor.victoria
-  #    - sensor.waterloocity
+      - sensor.circle_line_goodness
+      - sensor.district
+      - sensor.hammersmithcity
+      - sensor.jubilee
+      - sensor.metropolitan
+      - sensor.northern
+      - sensor.piccadilly
+      - sensor.victoria
+      - sensor.waterloocity
