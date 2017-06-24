@@ -56,24 +56,21 @@ class LondonTubeSensor(Entity):    # Entity
     """
     Sensor that reads the status of a tube lines using the TFL API.
     """
-
     API_URL_BASE = "https://api.tfl.gov.uk/line/{}/status"
     ICON = 'mdi:subway'
 
-    def __init__(self, line):
+    def __init__(self, name):
         """Initialize the sensor."""
+        self._name = name             # the name of the line from the allowed list
         self._data = {}
         self._url = self.API_URL_BASE
-        self._line = line
         self._state = 'Updating'
-        self._statuses = []
-        self._goodness = False
-        self._description = 'Updating'
+        self._description = ['Updating']
 
     @property
     def name(self):
         """Return the line name of the sensor."""
-        return self._line
+        return self._name
 
     @property
     def state(self):
@@ -86,38 +83,26 @@ class LondonTubeSensor(Entity):    # Entity
         return self.ICON
 
     @property
-    def unit_of_measurement(self):    # Do I need?
-        """Return the unit this state is expressed in."""
-        return ""
-
-    def update(self):
-        """Perform an API request."""
-
-        try:
-            response = requests.get(self._url.format(self._line.lower()))
-            response.raise_for_status()
-            self._data = response.json()[0]['lineStatuses']   # convert to json and get statuses list
-            self._statuses = [status['statusSeverityDescription'] for status in self._data]
-
-            if 'Good Service' in self._statuses:   # if good status, this is the only status returned
-                self._state = 'Good Service'
-                self._goodness = True              # convenience attribute to detect good service
-                self._description = 'Nothing to report'
-            else:
-                self._state = ' + '.join(set(self._statuses))   # get the unique statuses and join
-                self._goodness = False
-                self._description = [status['reason'] for status in self._data] # get the reasons
-
-        except requests.RequestException as req_exc:
-            print(
-                'Invalid response from API: %s', req_exc
-            )
-
-    @property
     def device_state_attributes(self):
         """Return other details about the sensor state."""
         attrs = {}  # {'attribution': 'Data provided by transportapi.com'}
-        attrs['Goodness'] = self._goodness # if there is data, append
-        attrs['Statuses'] = self._statuses # if there is data, append
         attrs['Description'] = self._description # if there is data, append
         return attrs
+
+    def update(self):
+        """Perform an API request and update the sensor."""
+        response = requests.get(self._url.format(self._name.lower()))    # make a request
+
+        if response.status_code != 200:
+            _LOGGER.warning("Invalid response from API")
+
+        else:
+            self._data = response.json()[0]['lineStatuses']   # convert to json and get statuses list
+            statuses = [status['statusSeverityDescription'] for status in self._data]   # get all statuses on a line
+
+            if 'Good Service' in statuses:   # if good status, this is the only status returned
+                self._state = 'Good Service'
+                self._description = 'Nothing to report'
+            else:
+                self._state = ' + '.join(set(statuses))   # get the unique statuses and join
+                self._description = [status['reason'] for status in self._data] # get the reasons

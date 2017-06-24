@@ -11,7 +11,7 @@
         "lineId":"hammersmith-city",
         "statusSeverity":5,
         "statusSeverityDescription":"Part Closure",
-        "reason":"Ongoing investigations",
+        "reason":"Ongoing investigations by Rob",
         "created":"0001-01-01T00:00:00",
         "validityPeriods":[{
           "$type":"Tfl.Api.Presentation.Entities.ValidityPeriod, Tfl.Api.Presentation.Entities",
@@ -22,7 +22,7 @@
             "$type":"Tfl.Api.Presentation.Entities.Disruption, Tfl.Api.Presentation.Entities",
             "category":"RealTime",
             "categoryDescription":"RealTime",
-            "description":"ongoing investigations",
+            "description":"NA",
             "additionalInfo":"For the latest updates and for help planning your journey follow us on Twitter <a href=\"https://twitter.com/circleline\">@circleline</a> and <a href=\"https://twitter.com/hamandcityline/\">@hamandcityline</a> or call us on 0343 222 1234.",
             "created":"2017-06-20T01:55:00Z",
             "affectedRoutes":[],
