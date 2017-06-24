@@ -1,0 +1,57 @@
+[
+  {
+    "$type": "Tfl.Api.Presentation.Entities.Line, Tfl.Api.Presentation.Entities",
+    "id": "circle",
+    "name": "Circle",
+    "modeName": "tube",
+    "disruptions": [
+    ],
+    "created": "2017-06-20T10:56:25.947Z",
+    "modified": "2017-06-20T10:56:25.947Z",
+    "lineStatuses": [
+      {
+        "$type": "Tfl.Api.Presentation.Entities.LineStatus, Tfl.Api.Presentation.Entities",
+        "id": 0,
+        "lineId": "circle",
+        "statusSeverity": 5,
+        "statusSeverityDescription": "Part Closure",
+        "reason": "ongoing investigations",
+        "created": "0001-01-01T00:00:00",
+        "validityPeriods": [
+          {
+            "$type": "Tfl.Api.Presentation.Entities.ValidityPeriod, Tfl.Api.Presentation.Entities",
+            "fromDate": "2017-06-24T04:30:00Z",
+            "toDate": "2017-06-24T23:59:00Z",
+            "isNow": true
+          }
+        ],
+        "disruption": {
+          "$type": "Tfl.Api.Presentation.Entities.Disruption, Tfl.Api.Presentation.Entities",
+          "category": "RealTime",
+          "categoryDescription": "RealTime",
+          "description": "Circle and Hammersmith & City lines - due to ongoing investigations at the site of the building fire near Latimer Road, the Circle and Hammersmith & City lines are suspended between Wood Lane and Edgware Road until further notice.\r\n<P>\r\nTrains will operate between Hammersmith and Wood Lane approximately every 15 minutes. Tickets are being accepted on local buses. Please check here for the latest information before you travel.\r\n</P>",
+          "additionalInfo": "For the latest updates and for help planning your journey follow us on Twitter <a href=\"https://twitter.com/circleline\">@circleline</a> and <a href=\"https://twitter.com/hamandcityline/\">@hamandcityline</a> or call us on 0343 222 1234.",
+          "created": "2017-06-20T01:55:00Z",
+          "affectedRoutes": [
+          ],
+          "affectedStops": [
+          ],
+          "isBlocking": true,
+          "closureText": "partClosure"
+        }
+      }
+    ],
+    "routeSections": [
+    ],
+    "serviceTypes": [
+      {
+        "$type": "Tfl.Api.Presentation.Entities.LineServiceTypeInfo, Tfl.Api.Presentation.Entities",
+        "name": "Regular",
+        "uri": "/Line/Route?ids=Circle&serviceTypes=Regular"
+      }
+    ],
+    "crowding": {
+      "$type": "Tfl.Api.Presentation.Entities.Crowding, Tfl.Api.Presentation.Entities"
+    }
+  }
+]
