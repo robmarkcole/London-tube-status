@@ -104,5 +104,5 @@ class LondonTubeSensor(Entity):    # Entity
                 self._state = 'Good Service'
                 self._description = 'Nothing to report'
             else:
-                self._state = ' + '.join(set(statuses))   # get the unique statuses and join
+                self._state = ' + '.join(sorted(set(statuses)))   # get the unique statuses and join
                 self._description = [status['reason'] for status in self._data] # get the reasons
