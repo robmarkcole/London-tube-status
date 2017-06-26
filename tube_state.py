@@ -1,9 +1,6 @@
 """
 For more details about this component, please refer to the documentation at
-https://home-assistant.io/cookbook/python_component_basic_state/
-
-Aim to merge into
-https://github.com/timcnicholls/home-assistant/blob/transport-api/homeassistant/components/sensor/uk_transport.py
+To do
 """
 
 import voluptuous as vol
@@ -19,7 +16,7 @@ import json
 SCAN_INTERVAL = timedelta(minutes=1)
 
 DOMAIN = 'tube_state'     #  must match the name of the compoenent
-CONF_LINE= 'line'         # get from config, look for 'line' and assign value to CONF_LINE
+CONF_LINE= 'line'
 ATTRIBUTION = "Powered by TfL Open Data"
 TUBE_LINES= ['Bakerloo',
              'Central',
@@ -61,7 +58,7 @@ class LondonTubeSensor(Entity):    # Entity
 
     def __init__(self, name):
         """Initialize the sensor."""
-        self._name = name             # the name of the line from the allowed list
+        self._name = name             # the name of the line
         self._data = {}
         self._url = self.API_URL_BASE
         self._state = 'Updating'
@@ -91,18 +88,20 @@ class LondonTubeSensor(Entity):    # Entity
 
     def update(self):
         """Perform an API request and update the sensor."""
-        response = requests.get(self._url.format(self._name.lower()))    # make a request
+        response = requests.get(self._url.format(self._name.lower()))
 
         if response.status_code != 200:
             _LOGGER.warning("Invalid response from API")
 
         else:
-            self._data = response.json()[0]['lineStatuses']   # convert to json and get statuses list
-            statuses = [status['statusSeverityDescription'] for status in self._data]   # get all statuses on a line
+            self._data = response.json()[0]['lineStatuses']
+            statuses = [status['statusSeverityDescription']
+                        for status in self._data] # get all statuses on a line
 
-            if 'Good Service' in statuses:   # if good status, this is the only status returned
+            if 'Good Service' in statuses:
                 self._state = 'Good Service'
                 self._description = 'Nothing to report'
             else:
-                self._state = ' + '.join(sorted(set(statuses)))   # get the unique statuses and join
-                self._description = [status['reason'] for status in self._data] # get the reasons
+                self._state = ' + '.join(sorted(set(statuses)))
+                self._description = [status['reason'] for status
+                                     in self._data] # get the reasons
