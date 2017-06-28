@@ -21,19 +21,13 @@ sensor:
       - Central
       - Circle
       - District
-      - Hammersmith-city
+      - Hammersmith & City
       - Jubilee
       - Metropolitan
       - Northern
       - Piccadilly
       - Victoria
-      - Waterloo-city
-
-  - platform: template
-    sensors:
-      circle_line_goodness:
-        value_template: '{{states.sensor.circle.attributes.Goodness}}'
-        friendly_name: 'Circle line Goodness'
+      - Waterloo & City
 
 group:
   default_view:
@@ -48,12 +42,11 @@ group:
       - sensor.bakerloo
       - sensor.central
       - sensor.circle
-      - sensor.circle_line_goodness
       - sensor.district
-      - sensor.hammersmithcity
+      - sensor.hammersmith__city
       - sensor.jubilee
       - sensor.metropolitan
       - sensor.northern
       - sensor.piccadilly
       - sensor.victoria
-      - sensor.waterloocity
+      - sensor.waterloo__city
