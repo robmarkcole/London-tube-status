@@ -1,13 +1,9 @@
-"""The tests for the WSDOT platform."""
-import re
+"""The tests for the tube_state platform."""
 import unittest
-from datetime import timedelta, datetime, timezone
-
 import requests_mock
 
 from homeassistant.components.sensor import tube_state
-from homeassistant.components.sensor.tube_state import (
-    LondonTubeSensor, CONF_LINE)
+from homeassistant.components.sensor.tube_state import CONF_LINE
 from homeassistant.setup import setup_component
 from tests.common import load_fixture, get_test_home_assistant
 
@@ -42,8 +38,8 @@ class TestLondonTubeSensor(unittest.TestCase):
     @requests_mock.Mocker()
     def test_setup(self, mock_req):
         """Test for operational WSDOT sensor with proper attributes."""
-        URL = 'https://api.tfl.gov.uk/line/mode/tube/status'
-        mock_req.get(URL, text=load_fixture('tube_state.json'))
+        url = 'https://api.tfl.gov.uk/line/mode/tube/status'
+        mock_req.get(url, text=load_fixture('tube_state.json'))
         tube_state.setup_platform(self.hass, self.config, self.add_entities)
         self.assertEqual(len(self.entities), 1)
         sensor = self.entities[0]
