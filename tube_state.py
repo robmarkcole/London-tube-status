@@ -24,11 +24,14 @@ TUBE_LINES = [
     'Central',
     'Circle',
     'District',
+    'DLR',
     'Hammersmith & City',
     'Jubilee',
+    'London Overground',
     'Metropolitan',
     'Northern',
     'Piccadilly',
+    'TfL Rail',
     'Victoria',
     'Waterloo & City']
 
@@ -51,7 +54,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
 
 class LondonTubeSensor(Entity):
-    """ Sensor that reads the status of a line from TubeData. """
+    """Sensor that reads the status of a line from TubeData."""
 
     ICON = 'mdi:subway'
 
@@ -102,7 +105,7 @@ class TubeData(object):
     @Throttle(SCAN_INTERVAL)
     def update(self):
         """Get the latest data from TFL."""
-        url = 'https://api.tfl.gov.uk/line/mode/tube/status'
+        url = 'https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status'
         response = requests.get(url)
         _LOGGER.info("TFL Request made")
         if response.status_code != 200:
