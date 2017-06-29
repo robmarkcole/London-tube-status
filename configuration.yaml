@@ -21,11 +21,14 @@ sensor:
       - Central
       - Circle
       - District
+      - DLR
       - Hammersmith & City
       - Jubilee
+      - London Overground
       - Metropolitan
       - Northern
       - Piccadilly
+      - TfL Rail
       - Victoria
       - Waterloo & City
 
@@ -43,10 +46,13 @@ group:
       - sensor.central
       - sensor.circle
       - sensor.district
+      - sensor.dlr
       - sensor.hammersmith__city
       - sensor.jubilee
+      - sensor.london_overground
       - sensor.metropolitan
       - sensor.northern
       - sensor.piccadilly
+      - sensor.tfl_rail
       - sensor.victoria
       - sensor.waterloo__city
