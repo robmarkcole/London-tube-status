@@ -1,10 +1,11 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+[![PyPI Version](https://img.shields.io/pypi/v/London-tube-status.svg)](https://pypi.org/project/London-tube-status/)
+
 
 # London-tube-status
-Python module for parsing the London tube data from [TFL](https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status) into a dictionary. No API key is required.
+Python module for parsing the London tube data from [TFL](https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status) into a dictionary. No API key is required. Install from pypi with `pip install london-tube-status`
 
 ## Usage
-
 ```python
 from london_tube_status import TubeData
 
