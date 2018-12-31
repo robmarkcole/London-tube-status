@@ -13,33 +13,45 @@ def parse_api_response(response):
     data_dict = dict.fromkeys(lines)
 
     for line in response:
-        statuses = [status['statusSeverityDescription']
-                    for status in line['lineStatuses']]
-        state = ' + '.join(sorted(set(statuses)))
+        try:
+            statuses = [status['statusSeverityDescription'] for status in line['lineStatuses']]
+            state = ' + '.join(sorted(set(statuses)))
+    
+            if state == 'Good Service':   # if good status, this is the only status returned
+                reason =  'Nothing to report'
+            else:
+                reason = ' *** '.join([status['reason'] for status in line['lineStatuses']])
 
-        if state == 'Good Service':
-            reason = 'Nothing to report'
-        else:
-            reason = ' *** '.join(
-                [status['reason'] for status in line['lineStatuses']])
-
-        attr = {'State': state, 'Description': reason}
-        data_dict[line['name']] = attr
+            data_dict[line['name']] = {'State': state, 'Description': reason}
+        
+        except:
+            data_dict[line['name']] = {'State': None, 'Description': 'Error parsing API data'}
 
     return data_dict
 
 
-class TubeData(object):
+class TubeData:
     """Get the latest tube data from TFL."""
 
     def __init__(self):
         """Initialize the TubeData object."""
-        self.data = {}
-        self.last_updated = None
+        self._data = {}
+        self._last_updated = None
 
     def update(self):
         """Get the latest data from TFL."""
         response = requests.get(API_URL)
-        self.data = parse_api_response(response.json())
-        self.last_updated = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        if response.status_code != 200:
+            return
+        self._data = parse_api_response(response.json())
+        self._last_updated = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
+    @property
+    def data(self):
+        """Return the data."""
+        return self._data
+
+    @property
+    def last_updated(self):
+        """Return the time data was last updated."""
+        return self._last_updated
