@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
-VERSION = "0.2"
+VERSION = "0.3"
 
-REQUIRES = ["requests"]
+REQUIRES = ["aiohttp"]
 
 setup(
     name="london-tube-status",
@@ -14,7 +14,7 @@ setup(
     install_requires=REQUIRES,
     packages=find_packages(),
     license="Apache License, Version 2.0",
-    python_requires=">=3.5",
+    python_requires=">=3.6",
     classifiers=[
         "Intended Audience :: Developers",
         "Natural Language :: English",
