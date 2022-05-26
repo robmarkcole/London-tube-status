@@ -4,7 +4,7 @@ Class for checking the status of London Underground tube lines, as well as the O
 from aiohttp import ClientSession
 from datetime import datetime
 
-API_URL = "https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status"
+API_URL = "https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail,elizabeth-line/status"
 
 
 def parse_api_response(response):
