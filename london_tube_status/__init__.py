@@ -1,10 +1,10 @@
 """
-Class for checking the status of London Underground tube lines, as well as the Overground, DLR and Tfl rail.
+Class for checking the status of London Underground tube lines, as well as the Overground, DLR and Elizabeth Line.
 """
 from aiohttp import ClientSession
 from datetime import datetime
 
-API_URL = "https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail,elizabeth-line/status"
+API_URL = "https://api.tfl.gov.uk/line/mode/tube,overground,dlr,elizabeth-line/status"
 
 
 def parse_api_response(response):
