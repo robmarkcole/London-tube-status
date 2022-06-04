@@ -2,7 +2,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/London-tube-status.svg)](https://pypi.org/project/London-tube-status/)
 
 # London-tube-status
-Python module for parsing the London tube data from [TFL](https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status) into a dictionary. No API key is required. Install from pypi with `pip install london-tube-status`
+Python module for parsing the London tube data from [TFL](https://api.tfl.gov.uk/line/mode/tube,overground,dlr,elizabeth-line/status) into a dictionary. No API key is required. Install from pypi with `pip install london-tube-status`
 
 Returned data (see `usage.ipynb`): 
 ```
@@ -24,7 +24,6 @@ Returned data (see `usage.ipynb`):
     'Metropolitan': {'Description': 'Nothing to report', 'State': 'Good Service'},
     'Northern': {'Description': 'Nothing to report', 'State': 'Good Service'},
     'Piccadilly': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'TfL Rail': {'Description': 'Nothing to report', 'State': 'Good Service'},
     'Victoria': {'Description': 'Nothing to report', 'State': 'Good Service'},
     'Waterloo & City': {'Description': 'Nothing to report',
                         'State': 'Good Service'}}
