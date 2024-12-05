@@ -6,27 +6,47 @@ Python module for parsing the London tube data from [TFL](https://api.tfl.gov.uk
 
 Returned data (see `usage.ipynb`): 
 ```
-    {'Bakerloo': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'Central': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'Circle': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'DLR': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'District': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'Elizabeth line': {'Description': 'ELIZABETH LINE: Services between '
-                                    'Paddington and Abbey Wood operate on '
-                                    'Monday to Saturday only, between 0630 and '
-                                    '2300.',
-                        'State': 'Part Closure'},
-    'Hammersmith & City': {'Description': 'Nothing to report',
-                            'State': 'Good Service'},
-    'Jubilee': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'London Overground': {'Description': 'Nothing to report',
+'2022-05-26 04:09:58'
+{'Bakerloo': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Central': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Circle': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'DLR': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'District': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Elizabeth line': {'Description': 'Minor delays between Hayes & Harlington '
+                                   'and Reading due to an earlier trespasser '
+                                   'at Slough. GOOD SERVICE on the rest of the '
+                                   'line. ',
+                    'State': 'Minor Delays'},
+ 'Hammersmith & City': {'Description': 'Nothing to report',
                         'State': 'Good Service'},
-    'Metropolitan': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'Northern': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'Piccadilly': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'Victoria': {'Description': 'Nothing to report', 'State': 'Good Service'},
-    'Waterloo & City': {'Description': 'Nothing to report',
-                        'State': 'Good Service'}}
+ 'Jubilee': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Liberty': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Lioness': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Metropolitan': {'Description': 'Metropolitan Line: Minor delays due to an '
+                                 'earlier faulty train at Finchley road. ',
+                  'State': 'Minor Delays'},
+ 'Mildmay': {'Description': 'London Overground: Severe delays between '
+                            'Willesden Junction and Clapham Junction due to an '
+                            'earlier points failure at Shepherds Bush. GOOD '
+                            'SERVICE on the rest of the line. ',
+             'State': 'Severe Delays'},
+ 'Northern': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Piccadilly': {'Description': 'PICCADILLY LINE: No service between Rayners '
+                               'Lane and Uxbridge due to poor rail conditions '
+                               'caused by significant leaf fall. *** '
+                               'Piccadilly Line: No service between Rayners '
+                               'Lane and Uxbridge due to difficult track '
+                               'conditions caused by significant leaf fall. '
+                               'MINOR DELAYS between Acton town and Rayners '
+                               'Lane due to shortage of trains GOOD SERVICE on '
+                               'the rest of the line ',
+                'State': 'Minor Delays + Part Closure'},
+ 'Suffragette': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Victoria': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Waterloo & City': {'Description': 'Nothing to report',
+                     'State': 'Good Service'},
+ 'Weaver': {'Description': 'Nothing to report', 'State': 'Good Service'},
+ 'Windrush': {'Description': 'Nothing to report', 'State': 'Good Service'}}
 ```
 
 ## Development
