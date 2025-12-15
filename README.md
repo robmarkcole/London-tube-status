@@ -2,7 +2,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/London-tube-status.svg)](https://pypi.org/project/London-tube-status/)
 
 # London-tube-status
-Python module for parsing the London tube data from [TFL](https://api.tfl.gov.uk/line/mode/tube,overground,dlr,elizabeth-line,tram/status) into a dictionary. No API key is required. Install from pypi with `pip install london-tube-status`
+Python module for parsing the London tube data from [TFL](https://api.tfl.gov.uk/line/mode/tube,overground,dlr,elizabeth-line,tram,cable-car/status) into a dictionary. No API key is required. Install from pypi with `pip install london-tube-status`
 
 Returned data (see `usage.ipynb`): 
 ```
@@ -56,4 +56,4 @@ Returned data (see `usage.ipynb`):
 * `pip3 install -e .` and `pip3 install -r requirements-dev.txt`
 * Run tests with `venv/bin/pytest tests/*`
 * Black format with `venv/bin/black .`
-* To run the jupyter notebook `pip3 install jupyter` and `venv/bin/jupyter lab.` or just run the notebook in vscode
+* To run the jupyter notebook `pip3 install jupyter` and `venv/bin/jupyter lab` or just run the notebook in vscode
